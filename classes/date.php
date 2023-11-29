@@ -17,6 +17,18 @@
 			}
 		}
 		
+		public function __get($prop)
+		{
+			if($prop == 'timeStamp')
+			{
+				return $this->timeStamp;
+			}
+			else
+			{
+				return date('Y - m - d', $this->timeStamp);
+			}
+		}
+		
 		public function getDay()
 		{
 			return date('d', $this->timeStamp);

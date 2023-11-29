@@ -6,31 +6,20 @@
 	
 	require 'connectDB.php';
 	require_once 'classes/date.php';
+	require_once 'classes/interval.php';
 
-	$date1 = new Date;
+	$date1 = new Date('2021-02-29');
+	$date2 = new Date('2024-02-28');
+	
+	$interval = new Interval($date1, $date2);
+	
+	echo $interval->toDays();   // выведет разницу в днях
+	echo '<br>';
+	echo $interval->toMonths(); // выведет разницу в месяцах
+	echo '<br>';
+	echo $interval->toYears();  // выведет разницу в годах
+	echo '<br>';
 	echo $date1;
 	echo '<br>';
-	$date2 = new Date('2021-05-15');
 	echo $date2;
-	echo '<br>';
-
-	$date = new Date('2025-12-31');
-	echo $date;
-	echo '<br>';
-	echo $date->getYear();  // выведет '2025'
-	echo '<br>';
-	echo $date->getMonth(); // выведет '12'
-	echo '<br>';
-	echo $date->getMonth('ru'); // выведет '12'
-	echo '<br>';
-	echo $date->getMonth('en'); // выведет '12'
-	echo '<br>';
-	echo $date->getDay();   // выведет '31'
-	echo '<br>';
-	echo $date->getWeekDay();     // выведет '3'
-	echo '<br>';
-	echo $date->getWeekDay('ru'); // выведет 'среда'
-	echo '<br>';
-	echo $date->getWeekDay('en'); // выведет 'wednesday'
-	echo '<br>';
 ?>
