@@ -27,40 +27,45 @@
 		}  // расширение файла
 		public function getSize()
 		{
-			return filesize($this->filePath['dirname'] . '/' . $this->filePath['basename']) / 1024 . 'Kb';
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return filesize($file) / 1024 . 'Kb';
 		} // размер файла
 		
 		public function getText()
 		{
-			$text = file_get_contents($this->filePath['dirname'] . '/' . $this->filePath['basename']);
-			echo '<pre>';
-			echo htmlspecialchars($text);
-			echo '</pre>';
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return file_get_contents($file);
 		}          // получает текст файла
 		public function setText($text)
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return file_put_contents($file, $text, LOCK_EX);
 		}     // устанавливает текст файла
 		public function appendText($text)
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
 		}  // добавляет текст в конец файла
 		
 		public function copy($copyPath)
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return copy($file, $copyPath . $file);
 		}    // копирует файл
 		public function delete()
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return delete($file);
 		}           // удаляет файл
 		public function rename($newName)
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return rename($file, $newName);
 		}   // переименовывает файл
 		public function replace($newPath)
 		{
-
+			$file = $this->filePath['dirname'] . '/' . $this->filePath['basename'];
+			return rename($file, $newPath . $file);
 		}  // перемещает файл
 	}
 ?>
